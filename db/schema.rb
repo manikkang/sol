@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420130410) do
+ActiveRecord::Schema.define(version: 20160426074651) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -871,6 +871,17 @@ ActiveRecord::Schema.define(version: 20160420130410) do
   end
 
   add_index "spree_shipping_rates", ["shipment_id", "shipping_method_id"], name: "spree_shipping_rates_join_index", unique: true, using: :btree
+
+  create_table "spree_skrill_transactions", force: :cascade do |t|
+    t.string   "email",          limit: 255
+    t.float    "amount",         limit: 24
+    t.string   "currency",       limit: 255
+    t.integer  "transaction_id", limit: 4
+    t.integer  "customer_id",    limit: 4
+    t.string   "payment_type",   limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_state_changes", force: :cascade do |t|
     t.string   "name",           limit: 255
