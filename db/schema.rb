@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426074651) do
+ActiveRecord::Schema.define(version: 20160430122045) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -299,12 +299,16 @@ ActiveRecord::Schema.define(version: 20160426074651) do
   add_index "spree_option_types", ["position"], name: "index_spree_option_types_on_position", using: :btree
 
   create_table "spree_option_values", force: :cascade do |t|
-    t.integer  "position",       limit: 4
-    t.string   "name",           limit: 255
-    t.string   "presentation",   limit: 255
-    t.integer  "option_type_id", limit: 4
+    t.integer  "position",           limit: 4
+    t.string   "name",               limit: 255
+    t.string   "presentation",       limit: 255
+    t.integer  "option_type_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   add_index "spree_option_values", ["option_type_id"], name: "index_spree_option_values_on_option_type_id", using: :btree
@@ -1192,8 +1196,8 @@ ActiveRecord::Schema.define(version: 20160426074651) do
     t.string   "persistence_token",      limit: 255
     t.string   "reset_password_token",   limit: 255
     t.string   "perishable_token",       limit: 255
-    t.integer  "sign_in_count",          limit: 4,   default: 0, null: false
-    t.integer  "failed_attempts",        limit: 4,   default: 0, null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "failed_attempts",        limit: 4,   default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -1214,6 +1218,12 @@ ActiveRecord::Schema.define(version: 20160426074651) do
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "name",                   limit: 255
+    t.boolean  "is_female",                          default: false
+    t.string   "photo_file_name",        limit: 255
+    t.string   "photo_content_type",     limit: 255
+    t.integer  "photo_file_size",        limit: 4
+    t.datetime "photo_updated_at"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
