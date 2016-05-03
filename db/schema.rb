@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430122045) do
+ActiveRecord::Schema.define(version: 20160502103014) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -155,6 +155,16 @@ ActiveRecord::Schema.define(version: 20160430122045) do
 
   add_index "spree_assets", ["viewable_id"], name: "index_assets_on_viewable_id", using: :btree
   add_index "spree_assets", ["viewable_type", "type"], name: "index_assets_on_viewable_type_and_type", using: :btree
+
+  create_table "spree_authentication_methods", force: :cascade do |t|
+    t.string   "environment", limit: 255
+    t.string   "provider",    limit: 255
+    t.string   "api_key",     limit: 255
+    t.string   "api_secret",  limit: 255
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_calculators", force: :cascade do |t|
     t.string   "type",            limit: 255
@@ -1178,6 +1188,14 @@ ActiveRecord::Schema.define(version: 20160430122045) do
   add_index "spree_user_addresses", ["address_id"], name: "index_spree_user_addresses_on_address_id", using: :btree
   add_index "spree_user_addresses", ["user_id", "address_id"], name: "index_spree_user_addresses_on_user_id_and_address_id", unique: true, using: :btree
   add_index "spree_user_addresses", ["user_id"], name: "index_spree_user_addresses_on_user_id", using: :btree
+
+  create_table "spree_user_authentications", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_user_stock_locations", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
