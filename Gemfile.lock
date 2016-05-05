@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/manikkang/soligem.git
-  revision: 06d771c6dc1ce4165c5618241408c03295818858
+  revision: 207c577102967984c49d315b963fc97791f02f92
   specs:
     solidus (1.3.0.alpha)
       solidus_api (= 1.3.0.alpha)
