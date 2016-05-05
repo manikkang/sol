@@ -47,5 +47,6 @@ group :development do
   gem 'spring'
   gem 'xray-rails'
  gem 'solidus_social'
+ 
 end
 
